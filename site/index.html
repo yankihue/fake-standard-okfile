@@ -3,159 +3,229 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OK File Authority</title>
+    <title>OK File Standard Authority — RFC 0001</title>
     <meta
       name="description"
-      content="The official public interface for RFC 0001: The OK File Format."
+      content="Official repository dossier for RFC 0001: The OK File Format. Specification, conformance CLI, diagnostic codes, fixture manifest, test suite, implementation guide, conformance lab, and deployment infrastructure."
     >
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <header class="site-header" aria-label="Primary">
-      <a class="brand" href="#top" aria-label="OK File Authority home">
-        <span class="brand-mark" aria-hidden="true">4F</span>
-        <span>
-          <strong>OK File Authority</strong>
-          <em>Office of Minimal Affirmation</em>
+    <header class="site-header">
+      <a class="crest" href="#top" aria-label="OK File Standard Authority home">
+        <span class="crest-seal" aria-hidden="true">OKF</span>
+        <span class="crest-text">
+          <strong>OK File Standard Authority</strong>
+          <em>Office of Byte-Level Affirmation Standards</em>
         </span>
       </a>
-      <nav>
+      <nav aria-label="Repository dossier navigation">
+        <a href="#dossier">Dossier</a>
         <a href="#standard">Standard</a>
-        <a href="#conformance">Conformance</a>
-        <a href="#registry">Registry</a>
-        <a href="#certificate">Certificate</a>
+        <a href="#tooling">Tooling</a>
+        <a href="#deployment">Deployment</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">RFC 0001 / Experimental / Implausibly Normative</p>
-          <h1 id="hero-title">The OK File Format</h1>
-          <p class="lede">
-            A three-byte standard for unqualified affirmative completion,
-            administered with the gravity usually reserved for treaties,
-            airworthiness directives, and elevators.
-          </p>
-        </div>
-        <aside class="byte-panel" aria-label="Canonical byte sequence">
-          <span class="panel-label">Canonical Sequence</span>
-          <ol>
-            <li><b>0x4f</b><span>O</span></li>
-            <li><b>0x4b</b><span>K</span></li>
-            <li><b>0x0a</b><span>LF</span></li>
-          </ol>
-          <p>All other sequences are rejected without ceremony.</p>
-        </aside>
-      </section>
-
-      <section class="notice" aria-label="Creative provenance">
-        <span>Authoritative Creative Source</span>
-        <code>opencode go deepseek pro ran through CLI</code>
-      </section>
-
-      <section id="standard" class="section-grid">
-        <div>
-          <p class="section-kicker">The Standard</p>
-          <h2>One accepted artifact. No interpretive latitude.</h2>
-        </div>
-        <div class="dense-copy">
-          <p>
-            An OK file is a finite byte sequence of length exactly three.
-            Consumers MUST read candidates as bytes and MUST accept only
-            <code>4f 4b 0a</code>. Producers MUST NOT localize, lowercase,
-            titlecase, decorate, quote, compress, encrypt, trim, or forgive.
-          </p>
-          <p>
-            The Conformance Aperture contains one sequence. Anything outside
-            the aperture is not nearly OK, culturally OK, visually OK, or OK
-            after normalization. It is invalid.
-          </p>
+      <section class="hero" aria-labelledby="hero-heading">
+        <p class="eyebrow">Experimental Standard &middot; Implausibly Normative</p>
+        <h1 id="hero-heading">RFC 0001: The OK File Format</h1>
+        <p class="lede">
+          A complete normative specification, reference implementation,
+          conformance test suite, diagnostic classification system, and
+          verification laboratory for a three-byte affirmation artifact.
+        </p>
+        <div class="hero-refs">
+          <span>RFC-0001-OKFILE.md</span>
+          <span>tools/okfile_conformance.py</span>
+          <span>fixtures/vectors.json</span>
+          <span>tests/test_okfile_conformance.py</span>
+          <span>docs/IMPLEMENTATION-GUIDE.md</span>
+          <span>conformance-lab/</span>
+          <span>vercel.json</span>
         </div>
       </section>
 
-      <section id="conformance" class="conformance">
-        <div class="section-heading">
-          <p class="section-kicker">Conformance</p>
-          <h2>Diagnostic code table</h2>
+      <section class="provenance" aria-label="Publication provenance">
+        <span class="provenance-label">Publication &amp; Design Provenance</span>
+        <span class="provenance-value">opencode deepsek v4 pro</span>
+      </section>
+
+      <section id="dossier" class="dossier" aria-labelledby="dossier-heading">
+        <p class="section-kicker">Repository Dossier</p>
+        <h2 id="dossier-heading">Complete project inventory</h2>
+        <p class="section-sub">
+          The following artifacts constitute the full delivery of RFC 0001.
+          Each is version-controlled, reviewable, and machine-verifiable.
+        </p>
+        <dl class="dossier-list">
+          <div>
+            <dt>RFC-0001-OKFILE.md</dt>
+            <dd>Normative specification. Defines the Conformance Aperture, byte-level
+            grammar, diagnostic code taxonomy, security considerations, IANA-style
+            token registry, and implementation mandates. 310 lines of RFC 2119 language.</dd>
+          </div>
+          <div>
+            <dt>tools/okfile_conformance.py</dt>
+            <dd>Reference conformance CLI. Accepts a file path, reads raw bytes, classifies
+            the candidate against the canonical sequence <code>4f 4b 0a</code>, and emits a
+            structured diagnostic code. Supports <code>--ceremony</code> and <code>--format</code> flags
+            (output: <code>text</code>, <code>json</code>, <code>certificate</code>) for
+            integration into CI pipelines.</dd>
+          </div>
+          <div>
+            <dt>Diagnostic Code System</dt>
+            <dd>Nine-category classification: OKF000 (conforms), OKF001 (empty), OKF002
+            (missing LF), OKF003 (CRLF), OKF004 (BOM), OKF005 (length mismatch), OKF006
+            (byte mismatch), OKF007 (provenance phrase missing), OKF008 (I/O or manifest
+            error). Each code carries a
+            deterministic cause and a prescribed remediation.</dd>
+          </div>
+          <div>
+            <dt>fixtures/vectors.json</dt>
+            <dd>Structured fixture manifest. Declares 11 test vectors, each with
+            <code>name</code>, <code>hex</code>, <code>valid</code>, and <code>code</code> fields.
+            Serves as the single source of truth for conformance testing.</dd>
+          </div>
+          <div>
+            <dt>tests/test_okfile_conformance.py</dt>
+            <dd>Automated test suite. Reads the fixture manifest, executes the
+            conformance CLI against every declared candidate, and asserts diagnostic
+            code parity. Designed for Python's <code>unittest</code> framework with no external dependencies.</dd>
+          </div>
+          <div>
+            <dt>docs/IMPLEMENTATION-GUIDE.md</dt>
+            <dd>Prose implementation guide. Covers file I/O byte discipline,
+            error-code interpretation, integration patterns for build systems and
+            deployment pipelines, and guidance for extending the diagnostic taxonomy
+            without narrowing the Conformance Aperture.</dd>
+          </div>
+          <div>
+            <dt>conformance-lab/</dt>
+            <dd>Self-contained conformance laboratory. Provides a reproducible
+            environment for executing the full test suite, generating conformance
+            certificates, and auditing candidate artifacts against the specification.</dd>
+          </div>
+          <div>
+            <dt>Repository &amp; Deployment</dt>
+            <dd>Source controlled in a private GitHub repository. Deployed to production
+            via Vercel (vercel.json, clean URLs, output directory <code>site/</code>).
+            The deployment serves this dossier page, the specification artifact, and
+            the public conformance interface.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="standard" class="standard" aria-labelledby="standard-heading">
+        <p class="section-kicker">The Standard</p>
+        <h2 id="standard-heading">One accepted sequence. Zero interpretive latitude.</h2>
+        <div class="standard-body">
+          <div class="standard-prose">
+            <p>
+              An OK file is a finite byte sequence of length exactly three. Consumers
+              MUST read candidates as raw bytes and MUST accept only the sequence
+              <code>0x4f 0x4b 0x0a</code> — corresponding to the ASCII characters
+              <code>O</code>, <code>K</code>, and a line feed.
+            </p>
+            <p>
+              Producers MUST NOT localize, lowercase, titlecase, decorate, quote,
+              compress, encrypt, trim, or forgive. The Conformance Aperture contains
+              exactly one sequence. Anything outside the aperture is not nearly OK,
+              culturally OK, or OK after normalization. It is invalid.
+            </p>
+            <p>
+              This standard treats three bytes as if they were public infrastructure.
+              The format is intentionally trivial. The rigor is not.
+            </p>
+          </div>
+          <aside class="canon-box" aria-label="Canonical byte sequence">
+            <span class="canon-label">Canonical Sequence</span>
+            <ol>
+              <li><b>0x4F</b><span>O</span></li>
+              <li><b>0x4B</b><span>K</span></li>
+              <li><b>0x0A</b><span>LF</span></li>
+            </ol>
+            <p>All other sequences are rejected without ceremony.</p>
+          </aside>
         </div>
+      </section>
+
+      <section id="tooling" class="tooling" aria-labelledby="tooling-heading">
+        <p class="section-kicker">Tooling &amp; Verification</p>
+        <h2 id="tooling-heading">Diagnostic code system and test infrastructure</h2>
         <div class="code-grid">
-          <article><b>OKF000</b><span>Candidate conforms</span></article>
-          <article><b>OKF001</b><span>Empty candidate</span></article>
-          <article><b>OKF002</b><span>Missing required LF</span></article>
-          <article><b>OKF003</b><span>CRLF line ending</span></article>
-          <article><b>OKF004</b><span>UTF-8 byte order mark</span></article>
-          <article><b>OKF005</b><span>Byte length mismatch</span></article>
-          <article><b>OKF006</b><span>Byte mismatch</span></article>
-          <article><b>OKF007</b><span>Provenance phrase missing</span></article>
+          <article><b>OKF000</b><span>Candidate conforms to RFC 0001</span></article>
+          <article><b>OKF001</b><span>Candidate is empty (zero bytes)</span></article>
+          <article><b>OKF002</b><span>Missing required line feed (LF)</span></article>
+          <article><b>OKF003</b><span>CRLF line ending detected</span></article>
+          <article><b>OKF004</b><span>UTF-8 byte order mark present</span></article>
+          <article><b>OKF005</b><span>Byte length does not equal 3</span></article>
+          <article><b>OKF006</b><span>Byte value mismatch at position</span></article>
+          <article><b>OKF007</b><span>Provenance phrase absent from candidate</span></article>
+          <article><b>OKF008</b><span>I/O or manifest error</span></article>
         </div>
-      </section>
-
-      <section id="registry" class="registry">
-        <div class="section-heading">
-          <p class="section-kicker">Affirmation Token Registry</p>
-          <h2>Active and rejected tokens</h2>
-        </div>
-        <div class="table-wrap" role="region" aria-label="Affirmation token registry">
-          <table>
-            <thead>
-              <tr>
-                <th>Token</th>
-                <th>Bytes</th>
-                <th>Status</th>
-                <th>Determination</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>OK</code></td>
-                <td><code>4f 4b 0a</code></td>
-                <td><span class="status active">Active</span></td>
-                <td>The only accepted token.</td>
-              </tr>
-              <tr>
-                <td><code>ok</code></td>
-                <td><code>6f 6b 0a</code></td>
-                <td><span class="status rejected">Rejected</span></td>
-                <td>Insufficient posture.</td>
-              </tr>
-              <tr>
-                <td><code>OK!</code></td>
-                <td><code>4f 4b 21 0a</code></td>
-                <td><span class="status rejected">Rejected</span></td>
-                <td>Emotional escalation.</td>
-              </tr>
-              <tr>
-                <td><code>K</code></td>
-                <td><code>4b 0a</code></td>
-                <td><span class="status rejected">Rejected</span></td>
-                <td>Procedurally abrupt.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section id="certificate" class="certificate">
-        <div>
-          <p class="section-kicker">Public Certificate</p>
-          <h2>Seal bytes: 4f 4b 0a</h2>
-          <p>
-            The certificate is not a security boundary, not legal advice, and
-            not evidence that anything useful happened. It certifies only that
-            the Conformance Aperture was applied with excessive seriousness.
-          </p>
-        </div>
-        <pre aria-label="Example conformance command"><code>python3 tools/okfile_conformance.py \
+        <div class="cli-showcase">
+          <p class="cli-intro">Reference conformance command:</p>
+          <pre aria-label="Conformance CLI invocation"><code>python3 tools/okfile_conformance.py \
   --ceremony \
   --format certificate \
   examples/valid.ok</code></pre>
+          <p class="cli-note">
+            Execute <code>python3 -m unittest discover -s tests</code> to run the full conformance suite against
+            the fixture manifest. Zero dependencies beyond Python 3.
+          </p>
+        </div>
+      </section>
+
+      <section id="deployment" class="deployment" aria-labelledby="deployment-heading">
+        <p class="section-kicker">Repository &amp; Deployment</p>
+        <h2 id="deployment-heading">Source control and production infrastructure</h2>
+        <div class="deploy-grid">
+          <article class="deploy-card">
+            <h3>Private GitHub Repository</h3>
+            <p>
+              All artifacts — specification, source code, fixtures, tests, documentation,
+              and site assets — are version-controlled in a private GitHub repository.
+              Commit history preserves the full evolution of the standard and its
+              conformance apparatus.
+            </p>
+          </article>
+          <article class="deploy-card">
+            <h3>Vercel Deployment</h3>
+            <p>
+              The public interface is deployed to Vercel via <code>vercel.json</code>.
+              Clean URLs, no trailing slashes, output directory <code>site/</code>.
+              The deployment serves this dossier, the specification, and the
+              conformance interface as a static site with zero runtime dependencies.
+            </p>
+          </article>
+          <article class="deploy-card">
+            <h3>Conformance Laboratory</h3>
+            <p>
+              The <code>conformance-lab/</code> directory provides a reproducible
+              verification environment. Any implementer may clone the repository,
+              execute the test suite, and produce a machine-verifiable conformance
+              certificate asserting compliance with RFC 0001.
+            </p>
+          </article>
+        </div>
       </section>
     </main>
 
     <footer>
-      <span>Office of Minimal Affirmation</span>
-      <span>RFC 0001 remains deliberately narrow.</span>
+      <div class="footer-left">
+        <span>OK File Standard Authority</span>
+        <span>Office of Byte-Level Affirmation Standards</span>
+      </div>
+      <div class="footer-center">
+        <span>RFC 0001 &middot; Experimental &middot; Implausibly Normative</span>
+        <span>Design Provenance: opencode deepsek v4 pro</span>
+      </div>
+      <div class="footer-right">
+        <span>The Conformance Aperture contains one sequence.</span>
+        <span>All others are rejected without ceremony.</span>
+      </div>
     </footer>
   </body>
 </html>

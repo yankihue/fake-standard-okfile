@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OK File Authority</title>
+    <meta
+      name="description"
+      content="The official public interface for RFC 0001: The OK File Format."
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="OK File Authority home">
+        <span class="brand-mark" aria-hidden="true">4F</span>
+        <span>
+          <strong>OK File Authority</strong>
+          <em>Office of Minimal Affirmation</em>
+        </span>
+      </a>
+      <nav>
+        <a href="#standard">Standard</a>
+        <a href="#conformance">Conformance</a>
+        <a href="#registry">Registry</a>
+        <a href="#certificate">Certificate</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">RFC 0001 / Experimental / Implausibly Normative</p>
+          <h1 id="hero-title">The OK File Format</h1>
+          <p class="lede">
+            A three-byte standard for unqualified affirmative completion,
+            administered with the gravity usually reserved for treaties,
+            airworthiness directives, and elevators.
+          </p>
+        </div>
+        <aside class="byte-panel" aria-label="Canonical byte sequence">
+          <span class="panel-label">Canonical Sequence</span>
+          <ol>
+            <li><b>0x4f</b><span>O</span></li>
+            <li><b>0x4b</b><span>K</span></li>
+            <li><b>0x0a</b><span>LF</span></li>
+          </ol>
+          <p>All other sequences are rejected without ceremony.</p>
+        </aside>
+      </section>
+
+      <section class="notice" aria-label="Creative provenance">
+        <span>Authoritative Creative Source</span>
+        <code>opencode go deepseek pro ran through CLI</code>
+      </section>
+
+      <section id="standard" class="section-grid">
+        <div>
+          <p class="section-kicker">The Standard</p>
+          <h2>One accepted artifact. No interpretive latitude.</h2>
+        </div>
+        <div class="dense-copy">
+          <p>
+            An OK file is a finite byte sequence of length exactly three.
+            Consumers MUST read candidates as bytes and MUST accept only
+            <code>4f 4b 0a</code>. Producers MUST NOT localize, lowercase,
+            titlecase, decorate, quote, compress, encrypt, trim, or forgive.
+          </p>
+          <p>
+            The Conformance Aperture contains one sequence. Anything outside
+            the aperture is not nearly OK, culturally OK, visually OK, or OK
+            after normalization. It is invalid.
+          </p>
+        </div>
+      </section>
+
+      <section id="conformance" class="conformance">
+        <div class="section-heading">
+          <p class="section-kicker">Conformance</p>
+          <h2>Diagnostic code table</h2>
+        </div>
+        <div class="code-grid">
+          <article><b>OKF000</b><span>Candidate conforms</span></article>
+          <article><b>OKF001</b><span>Empty candidate</span></article>
+          <article><b>OKF002</b><span>Missing required LF</span></article>
+          <article><b>OKF003</b><span>CRLF line ending</span></article>
+          <article><b>OKF004</b><span>UTF-8 byte order mark</span></article>
+          <article><b>OKF005</b><span>Byte length mismatch</span></article>
+          <article><b>OKF006</b><span>Byte mismatch</span></article>
+          <article><b>OKF007</b><span>Provenance phrase missing</span></article>
+        </div>
+      </section>
+
+      <section id="registry" class="registry">
+        <div class="section-heading">
+          <p class="section-kicker">Affirmation Token Registry</p>
+          <h2>Active and rejected tokens</h2>
+        </div>
+        <div class="table-wrap" role="region" aria-label="Affirmation token registry">
+          <table>
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Bytes</th>
+                <th>Status</th>
+                <th>Determination</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>OK</code></td>
+                <td><code>4f 4b 0a</code></td>
+                <td><span class="status active">Active</span></td>
+                <td>The only accepted token.</td>
+              </tr>
+              <tr>
+                <td><code>ok</code></td>
+                <td><code>6f 6b 0a</code></td>
+                <td><span class="status rejected">Rejected</span></td>
+                <td>Insufficient posture.</td>
+              </tr>
+              <tr>
+                <td><code>OK!</code></td>
+                <td><code>4f 4b 21 0a</code></td>
+                <td><span class="status rejected">Rejected</span></td>
+                <td>Emotional escalation.</td>
+              </tr>
+              <tr>
+                <td><code>K</code></td>
+                <td><code>4b 0a</code></td>
+                <td><span class="status rejected">Rejected</span></td>
+                <td>Procedurally abrupt.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="certificate" class="certificate">
+        <div>
+          <p class="section-kicker">Public Certificate</p>
+          <h2>Seal bytes: 4f 4b 0a</h2>
+          <p>
+            The certificate is not a security boundary, not legal advice, and
+            not evidence that anything useful happened. It certifies only that
+            the Conformance Aperture was applied with excessive seriousness.
+          </p>
+        </div>
+        <pre aria-label="Example conformance command"><code>python3 tools/okfile_conformance.py \
+  --ceremony \
+  --format certificate \
+  examples/valid.ok</code></pre>
+      </section>
+    </main>
+
+    <footer>
+      <span>Office of Minimal Affirmation</span>
+      <span>RFC 0001 remains deliberately narrow.</span>
+    </footer>
+  </body>
+</html>

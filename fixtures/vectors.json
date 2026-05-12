@@ -1,0 +1,72 @@
+{
+  "standard": "RFC 0001: The OK File Format",
+  "creative_source": "opencode go deepseek pro ran through CLI",
+  "vectors": [
+    {
+      "name": "canonical",
+      "hex": "4f4b0a",
+      "valid": true,
+      "code": "OKF000"
+    },
+    {
+      "name": "missing-lf",
+      "hex": "4f4b",
+      "valid": false,
+      "code": "OKF002"
+    },
+    {
+      "name": "crlf",
+      "hex": "4f4b0d0a",
+      "valid": false,
+      "code": "OKF003"
+    },
+    {
+      "name": "lowercase",
+      "hex": "6f6b0a",
+      "valid": false,
+      "code": "OKF006"
+    },
+    {
+      "name": "trailing-space",
+      "hex": "4f4b200a",
+      "valid": false,
+      "code": "OKF005"
+    },
+    {
+      "name": "bom-prefixed",
+      "hex": "efbbbf4f4b0a",
+      "valid": false,
+      "code": "OKF004"
+    },
+    {
+      "name": "empty",
+      "hex": "",
+      "valid": false,
+      "code": "OKF001"
+    },
+    {
+      "name": "enthusiastic",
+      "hex": "4f4b210a",
+      "valid": false,
+      "code": "OKF005"
+    },
+    {
+      "name": "hesitant",
+      "hex": "4f4b3f0a",
+      "valid": false,
+      "code": "OKF005"
+    },
+    {
+      "name": "leading-space",
+      "hex": "204f4b0a",
+      "valid": false,
+      "code": "OKF005"
+    },
+    {
+      "name": "double-newline",
+      "hex": "4f4b0a0a",
+      "valid": false,
+      "code": "OKF005"
+    }
+  ]
+}

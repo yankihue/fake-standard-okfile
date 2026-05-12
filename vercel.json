@@ -1,0 +1,5 @@
+{
+  "cleanUrls": true,
+  "outputDirectory": "site",
+  "trailingSlash": false
+}

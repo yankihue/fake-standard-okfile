@@ -6,7 +6,7 @@
     <title>OK File Standard Authority — RFC 0001</title>
     <meta
       name="description"
-      content="Official repository dossier for RFC 0001: The OK File Format. Specification, conformance CLI, diagnostic codes, fixture manifest, test suite, implementation guide, conformance lab, and deployment infrastructure."
+      content="Official repository dossier for RFC 0001: The OK File Format. Specification, installable conformance CLI, diagnostic codes, fixture manifest, test suite, implementation guide, and browser validator."
     >
     <link rel="stylesheet" href="./styles.css">
   </head>
@@ -21,6 +21,7 @@
       </a>
       <nav aria-label="Repository dossier navigation">
         <a href="#dossier">Dossier</a>
+        <a href="#validator">Validator</a>
         <a href="#standard">Standard</a>
         <a href="#tooling">Tooling</a>
         <a href="#deployment">Deployment</a>
@@ -38,7 +39,8 @@
         </p>
         <div class="hero-refs">
           <span>RFC-0001-OKFILE.md</span>
-          <span>tools/okfile_conformance.py</span>
+          <span>okfile/conformance.py</span>
+          <span>okfile CLI</span>
           <span>fixtures/vectors.json</span>
           <span>tests/test_okfile_conformance.py</span>
           <span>docs/IMPLEMENTATION-GUIDE.md</span>
@@ -49,7 +51,7 @@
 
       <section class="provenance" aria-label="Publication provenance">
         <span class="provenance-label">Publication &amp; Design Provenance</span>
-        <span class="provenance-value">opencode deepsek v4 pro</span>
+        <span class="provenance-value">opencode go deepseek pro ran through CLI</span>
       </section>
 
       <section id="dossier" class="dossier" aria-labelledby="dossier-heading">
@@ -67,12 +69,12 @@
             token registry, and implementation mandates. 310 lines of RFC 2119 language.</dd>
           </div>
           <div>
-            <dt>tools/okfile_conformance.py</dt>
-            <dd>Reference conformance CLI. Accepts a file path, reads raw bytes, classifies
+            <dt>okfile/conformance.py</dt>
+            <dd>Packaged reference implementation. Accepts a file path, reads raw bytes, classifies
             the candidate against the canonical sequence <code>4f 4b 0a</code>, and emits a
             structured diagnostic code. Supports <code>--ceremony</code> and <code>--format</code> flags
             (output: <code>text</code>, <code>json</code>, <code>certificate</code>) for
-            integration into CI pipelines.</dd>
+            integration into CI pipelines through the <code>okfile</code> console script.</dd>
           </div>
           <div>
             <dt>Diagnostic Code System</dt>
@@ -109,12 +111,38 @@
           </div>
           <div>
             <dt>Repository &amp; Deployment</dt>
-            <dd>Source controlled in a private GitHub repository. Deployed to production
-            via Vercel (vercel.json, clean URLs, output directory <code>site/</code>).
-            The deployment serves this dossier page, the specification artifact, and
-            the public conformance interface.</dd>
+            <dd>Prepared as a public GitHub repository with package metadata, CI, MIT
+            license, and static site configuration. The dossier can be served from
+            <code>site/</code> with no runtime dependencies.</dd>
           </div>
         </dl>
+      </section>
+
+      <section id="validator" class="validator" aria-labelledby="validator-heading">
+        <p class="section-kicker">Browser Validator</p>
+        <h2 id="validator-heading">Submit bytes to the Conformance Aperture</h2>
+        <div class="validator-grid">
+          <div class="validator-panel">
+            <label for="candidate-file">Candidate file</label>
+            <input id="candidate-file" type="file">
+            <label for="candidate">Candidate text fallback</label>
+            <textarea id="candidate" spellcheck="false">OK
+</textarea>
+            <div class="validator-actions">
+              <button type="button" data-sample="valid">Canonical</button>
+              <button type="button" data-sample="missing-lf">Missing LF</button>
+              <button type="button" data-sample="lowercase">Lowercase</button>
+              <button type="button" data-sample="crlf">CRLF</button>
+            </div>
+          </div>
+          <output class="verdict" id="verdict" aria-live="polite">
+            <span class="verdict-label">Verdict</span>
+            <strong>OKF000</strong>
+            <span>conforms</span>
+            <code>4f 4b 0a</code>
+            <small>Certificate: AFFIRMED</small>
+          </output>
+        </div>
       </section>
 
       <section id="standard" class="standard" aria-labelledby="standard-heading">
@@ -167,12 +195,13 @@
         </div>
         <div class="cli-showcase">
           <p class="cli-intro">Reference conformance command:</p>
-          <pre aria-label="Conformance CLI invocation"><code>python3 tools/okfile_conformance.py \
+          <pre aria-label="Conformance CLI invocation"><code>okfile \
   --ceremony \
   --format certificate \
   examples/valid.ok</code></pre>
           <p class="cli-note">
-            Execute <code>python3 -m unittest discover -s tests</code> to run the full conformance suite against
+            Install with <code>python3 -m pip install .</code>, then execute
+            <code>python3 -m unittest discover -s tests</code> to run the full conformance suite against
             the fixture manifest. Zero dependencies beyond Python 3.
           </p>
         </div>
@@ -183,12 +212,11 @@
         <h2 id="deployment-heading">Source control and production infrastructure</h2>
         <div class="deploy-grid">
           <article class="deploy-card">
-            <h3>Private GitHub Repository</h3>
+            <h3>Public GitHub Repository</h3>
             <p>
               All artifacts — specification, source code, fixtures, tests, documentation,
-              and site assets — are version-controlled in a private GitHub repository.
-              Commit history preserves the full evolution of the standard and its
-              conformance apparatus.
+              package metadata, CI, license, and site assets — are version-controlled
+              for public release.
             </p>
           </article>
           <article class="deploy-card">
@@ -196,8 +224,8 @@
             <p>
               The public interface is deployed to Vercel via <code>vercel.json</code>.
               Clean URLs, no trailing slashes, output directory <code>site/</code>.
-              The deployment serves this dossier, the specification, and the
-              conformance interface as a static site with zero runtime dependencies.
+              The deployment serves this dossier and the browser conformance interface
+              as a static site with zero runtime dependencies.
             </p>
           </article>
           <article class="deploy-card">
@@ -220,12 +248,89 @@
       </div>
       <div class="footer-center">
         <span>RFC 0001 &middot; Experimental &middot; Implausibly Normative</span>
-        <span>Design Provenance: opencode deepsek v4 pro</span>
+        <span>Design Provenance: opencode go deepseek pro ran through CLI</span>
       </div>
       <div class="footer-right">
         <span>The Conformance Aperture contains one sequence.</span>
         <span>All others are rejected without ceremony.</span>
       </div>
     </footer>
+    <script>
+      const candidate = document.querySelector("#candidate");
+      const candidateFile = document.querySelector("#candidate-file");
+      const verdict = document.querySelector("#verdict");
+      const encoder = new TextEncoder();
+      let activeBytes = encoder.encode(candidate.value);
+      let activeSource = "textarea";
+      const samples = {
+        valid: "OK\n",
+        "missing-lf": "OK",
+        lowercase: "ok\n",
+        crlf: "OK\r\n",
+      };
+
+      function toHex(bytes) {
+        return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join(" ");
+      }
+
+      function escapeHtml(value) {
+        return value.replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+      }
+
+      function diagnose(bytes) {
+        const hex = toHex(bytes);
+        if (hex === "4f 4b 0a") return ["OKF000", "conforms", hex, true, "AFFIRMED"];
+        if (bytes.length === 0) return ["OKF001", "empty candidate", hex, false, "WITHHELD"];
+        if (hex === "4f 4b") return ["OKF002", "missing required trailing LF byte", hex, false, "WITHHELD"];
+        if (hex === "4f 4b 0d 0a") return ["OKF003", "uses CRLF; expected LF only", hex, false, "WITHHELD"];
+        if (hex.startsWith("ef bb bf")) return ["OKF004", "contains UTF-8 byte order mark", hex, false, "WITHHELD"];
+        if (bytes.length !== 3) return ["OKF005", `length ${bytes.length} bytes; expected 3 bytes`, hex, false, "WITHHELD"];
+        return ["OKF006", "byte mismatch", hex, false, "WITHHELD"];
+      }
+
+      function render() {
+        const [code, message, hex, ok, certificate] = diagnose(activeBytes);
+        verdict.classList.toggle("is-ok", ok);
+        verdict.classList.toggle("is-fail", !ok);
+        verdict.innerHTML = `
+          <span class="verdict-label">Verdict</span>
+          <strong>${code}</strong>
+          <span>${message}</span>
+          <code>${hex || "(empty)"}</code>
+          <small>Source: ${escapeHtml(activeSource)}</small>
+          <small>Certificate: ${certificate}</small>
+        `;
+      }
+
+      document.querySelectorAll("[data-sample]").forEach((button) => {
+        button.addEventListener("click", () => {
+          candidate.value = samples[button.dataset.sample];
+          candidateFile.value = "";
+          activeBytes = encoder.encode(candidate.value);
+          activeSource = `sample: ${button.dataset.sample}`;
+          render();
+        });
+      });
+      candidate.addEventListener("input", () => {
+        candidateFile.value = "";
+        activeBytes = encoder.encode(candidate.value);
+        activeSource = "textarea";
+        render();
+      });
+      candidateFile.addEventListener("change", async () => {
+        const [file] = candidateFile.files;
+        if (!file) return;
+        activeBytes = new Uint8Array(await file.arrayBuffer());
+        activeSource = file.name || "uploaded file";
+        render();
+      });
+      render();
+    </script>
   </body>
 </html>

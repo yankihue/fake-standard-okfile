@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.okfile_conformance import (
+from okfile.conformance import (
     CANONICAL_OKFILE,
     check_okfile,
     check_rfc,

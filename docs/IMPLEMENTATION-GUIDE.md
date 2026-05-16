@@ -40,7 +40,7 @@ valid = Path("result.ok").read_bytes() == b"OK\n"
 For the full Ceremony Profile:
 
 ```sh
-python3 tools/okfile_conformance.py \
+okfile \
   --ceremony \
   --rfc RFC-0001-OKFILE.md \
   --vectors fixtures/vectors.json \

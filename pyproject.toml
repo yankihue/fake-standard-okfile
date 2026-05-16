@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fake-standard-okfile"
+version = "0.1.0"
+description = "An implausibly serious conformance suite for files containing exactly OK plus LF."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Yanki Hue" }]
+keywords = ["okfile", "rfc", "conformance", "joke-standard"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development :: Testing",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/yankihue/fake-standard-okfile"
+Repository = "https://github.com/yankihue/fake-standard-okfile"
+Issues = "https://github.com/yankihue/fake-standard-okfile/issues"
+
+[project.scripts]
+okfile = "okfile.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["okfile*"]

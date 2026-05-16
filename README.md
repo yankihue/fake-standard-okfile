@@ -1,96 +1,96 @@
-# Fake Standard: RFC 0001
+# The OK File Standard
 
-This repository contains an intentionally over-serious fake standard and
-conformance suite for a trivial artifact: the `OK` file.
+[![CI](https://github.com/yankihue/fake-standard-okfile/actions/workflows/ci.yml/badge.svg)](https://github.com/yankihue/fake-standard-okfile/actions/workflows/ci.yml)
 
-Creative premise, preserved as a normative requirement:
-
-```text
-all creative decisions come from opencode go deepseek pro ran through CLI
-```
-
-The actual standard phrase enforced by tooling is:
-
-```text
-opencode go deepseek pro ran through CLI
-```
-
-## What This Is
-
-An OK file is valid only when it is exactly three bytes:
-
-```text
-4f 4b 0a
-```
-
-Rendered as text:
+RFC 0001 defines the only valid OK file:
 
 ```text
 OK
 ```
 
-That is the entire payload. Everything else is non-conforming. The project then
-treats that fact with absurd procedural gravity.
+That display hides the whole standard: exactly three bytes, `4f 4b 0a`.
+Uppercase `O`, uppercase `K`, one LF. No CRLF. No BOM. No enthusiasm.
 
-## Contents
+This repository treats that tiny fact with inappropriate procedural gravity:
+an over-serious RFC, a real conformance CLI, fixture vectors, diagnostic codes,
+tests, and a small public dossier page.
 
-- [RFC-0001-OKFILE.md](RFC-0001-OKFILE.md): the fake RFC
-- [tools/okfile_conformance.py](tools/okfile_conformance.py): conformance CLI
-- [fixtures/vectors.json](fixtures/vectors.json): normative vector manifest
-- [docs/IMPLEMENTATION-GUIDE.md](docs/IMPLEMENTATION-GUIDE.md): practical guidance with unjustified gravitas
-- [conformance-lab/README.md](conformance-lab/README.md): ceremonial lab notes
-- [examples/valid.ok](examples/valid.ok): canonical conforming artifact
-- [examples/invalid-lowercase.ok](examples/invalid-lowercase.ok): invalid sample
-- [tests/test_okfile_conformance.py](tests/test_okfile_conformance.py): tests
+## Quick Start
 
-## CLI
-
-Validate OK files:
+Run from a checkout:
 
 ```sh
 python3 tools/okfile_conformance.py examples/valid.ok
 python3 tools/okfile_conformance.py examples/invalid-lowercase.ok
 ```
 
-Emit JSON diagnostics:
+Install the CLI:
 
 ```sh
-python3 tools/okfile_conformance.py --format json examples/valid.ok
+python3 -m pip install .
+okfile examples/valid.ok
 ```
 
-Emit a ceremonial certificate:
+Install with `pipx` from GitHub:
 
 ```sh
-python3 tools/okfile_conformance.py --format certificate examples/valid.ok
+pipx install git+https://github.com/yankihue/fake-standard-okfile.git
+okfile examples/valid.ok
 ```
 
-Validate the RFC provenance requirement:
+Run the full ceremony:
 
 ```sh
-python3 tools/okfile_conformance.py --check-rfc RFC-0001-OKFILE.md
-```
-
-Run the full fake standards ceremony:
-
-```sh
-python3 tools/okfile_conformance.py \
+okfile \
   --ceremony \
   --rfc RFC-0001-OKFILE.md \
   --vectors fixtures/vectors.json \
   examples/valid.ok
 ```
 
-Run tests:
+Issue a certificate, because the bytes asked for due process:
 
 ```sh
-python3 -m unittest discover -s tests
+okfile --format certificate examples/valid.ok
 ```
+
+## What Counts As OK?
+
+Valid:
+
+```text
+4f 4b 0a
+```
+
+Invalid examples include:
+
+- `OK` without the trailing LF: `OKF002`
+- `OK\r\n`: `OKF003`
+- UTF-8 BOM plus `OK\n`: `OKF004`
+- `OK \n`, `OK!\n`, or `OK\n\n`: `OKF005`
+- `ok\n`: `OKF006`
+
+The fixture manifest in [fixtures/vectors.json](fixtures/vectors.json) is the
+normative test inventory.
 
 ## Exit Codes
 
 - `0`: every checked artifact conforms
 - `1`: one or more artifacts fail conformance
 - `2`: invocation, I/O, manifest, or RFC audit error
+
+## Repository Map
+
+- [RFC-0001-OKFILE.md](RFC-0001-OKFILE.md): the fake RFC
+- [okfile/conformance.py](okfile/conformance.py): importable reference implementation
+- [okfile/cli.py](okfile/cli.py): console entrypoint for `okfile`
+- [tools/okfile_conformance.py](tools/okfile_conformance.py): compatibility wrapper
+- [fixtures/vectors.json](fixtures/vectors.json): normative vector manifest
+- [examples/valid.ok](examples/valid.ok): canonical conforming artifact
+- [examples/invalid-lowercase.ok](examples/invalid-lowercase.ok): invalid sample
+- [tests/test_okfile_conformance.py](tests/test_okfile_conformance.py): conformance tests
+- [docs/IMPLEMENTATION-GUIDE.md](docs/IMPLEMENTATION-GUIDE.md): implementation guidance
+- [site/](site/): static dossier and browser validator
 
 ## Diagnostic Codes
 
@@ -103,3 +103,28 @@ python3 -m unittest discover -s tests
 - `OKF006`: byte mismatch
 - `OKF007`: provenance phrase missing
 - `OKF008`: I/O or manifest error
+
+## Tests
+
+```sh
+python3 -m unittest discover -s tests
+```
+
+CI runs the tests, installs the package, verifies `okfile examples/valid.ok`,
+and runs the ceremony profile.
+
+## Why?
+
+Because a three-byte file is funnier when it has a standards process.
+
+The tool is real. The standard is tiny. The seriousness is the joke.
+
+## Prior Art
+
+- RFC 2119, for making ordinary words feel legally upholstered.
+- Unix exit status `0`, for being useful without needing a committee.
+- Every CI badge that ever said "passing" while concealing a small tragedy.
+
+## License
+
+MIT.

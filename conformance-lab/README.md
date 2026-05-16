@@ -9,7 +9,7 @@ the courage to compare them exactly.
 Suggested lab exercise:
 
 ```sh
-python3 ../tools/okfile_conformance.py \
+okfile \
   --format certificate \
   --ceremony \
   --rfc ../RFC-0001-OKFILE.md \

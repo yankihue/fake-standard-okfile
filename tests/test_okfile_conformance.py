@@ -84,7 +84,7 @@ class OkFileConformanceTests(unittest.TestCase):
         self.assertEqual(payload["summary"], {"total": 2, "passed": 1, "failed": 1})
         self.assertEqual(payload["creative_source"], "opencode go deepseek pro ran through CLI")
 
-    def test_certificate_report_has_grandiose_verdict(self):
+    def test_certificate_report_has_verdict(self):
         report = render_certificate([diagnose_okfile_bytes(CANONICAL_OKFILE, "valid")])
         self.assertIn("CERTIFICATE OF OK FILE CONFORMANCE", report)
         self.assertIn("Verdict: AFFIRMED", report)

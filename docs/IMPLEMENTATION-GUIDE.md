@@ -1,6 +1,6 @@
 # OK File Format Implementation Guide
 
-This guide is non-normative, except emotionally.
+This guide is non-normative.
 
 ## Producer Algorithm
 
@@ -48,8 +48,7 @@ okfile \
   examples/valid.ok
 ```
 
-The resulting certificate is deliberately grandiose. It is still only about
-three bytes.
+The resulting certificate records the diagnostic outcome.
 
 ## Common Non-Conformances
 

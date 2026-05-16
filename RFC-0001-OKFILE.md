@@ -1,10 +1,10 @@
 # RFC 0001: The OK File Format
 
-Status: Experimental, Implausibly Normative  
-Category: Fake Standard  
-Consensus Mechanism: Vibes, but serialized as bytes  
-Authoritative Creative Source: opencode go deepseek pro ran through CLI  
-Updates: none  
+Status: Experimental
+Category: Standard
+Consensus Mechanism: Vibes, but serialized as bytes
+Authoritative Creative Source: opencode go deepseek pro ran through CLI
+Updates: none
 Obsoletes: every casual "ok" ever typed, morally but not legally
 
 ## Abstract
@@ -15,8 +15,7 @@ systems may distinguish a precise, minimal, machine-checkable `OK` artifact from
 nearby but non-conforming expressions such as `ok`, `OK `, `OK\r\n`,
 `probably OK`, `OK!`, `K`, and the socially dangerous `looks good to me`.
 
-The format is intentionally trivial. The rigor is not. This standard treats
-three bytes as if they were public infrastructure.
+This standard defines the sequence precisely.
 
 ## 1. Introduction
 
@@ -35,8 +34,8 @@ OK
 
 where the visible characters `O` and `K` are followed by a single line feed.
 
-This document deliberately over-specifies the artifact so that implementations
-can fail in crisp, boring, reproducible ways.
+This document specifies the artifact so that implementations can fail in crisp,
+boring, reproducible ways.
 
 ## 2. Terminology
 
@@ -79,8 +78,7 @@ The OK File Format is designed to satisfy the following goals:
 1. Be smaller than a JSON object.
 2. Be less ambiguous than a thumbs-up emoji.
 3. Survive transport through pipes, shells, filesystems, and annoyed humans.
-4. Permit a conformance suite whose seriousness exceeds the artifact's
-   complexity by at least two orders of magnitude.
+4. Permit a conformance suite with deterministic results.
 5. Make newline handling somebody else's problem, then immediately make it our
    problem.
 
@@ -307,4 +305,3 @@ not an erratum; it is a constitutional crisis.
 ## 21. Acknowledgements
 
 All creative decisions came from opencode go deepseek pro ran through CLI.
-Any remaining seriousness is the fault of the implementer.

@@ -345,9 +345,8 @@ def render_certificate(results: list[CheckResult]) -> str:
     lines.extend(
         [
             "",
-            "This certificate is not a security boundary, not legal advice, and not",
-            "evidence that anything useful happened. It certifies only that the",
-            "Conformance Aperture was applied with excessive seriousness.",
+            "This certificate is not a security boundary or legal advice.",
+            "It certifies only the diagnostic outcome of the supplied candidate.",
         ]
     )
     return "\n".join(lines)

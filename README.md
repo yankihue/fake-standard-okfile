@@ -11,9 +11,8 @@ OK
 That display hides the whole standard: exactly three bytes, `4f 4b 0a`.
 Uppercase `O`, uppercase `K`, one LF. No CRLF. No BOM. No enthusiasm.
 
-This repository treats that tiny fact with inappropriate procedural gravity:
-an over-serious RFC, a real conformance CLI, fixture vectors, diagnostic codes,
-tests, and a small public dossier page.
+This repository contains the RFC, conformance CLI, fixture vectors, diagnostic
+codes, tests, and a small public dossier page.
 
 ## Quick Start
 
@@ -48,7 +47,7 @@ okfile \
   examples/valid.ok
 ```
 
-Issue a certificate, because the bytes asked for due process:
+Issue a certificate:
 
 ```sh
 okfile --format certificate examples/valid.ok
@@ -81,7 +80,7 @@ normative test inventory.
 
 ## Repository Map
 
-- [RFC-0001-OKFILE.md](RFC-0001-OKFILE.md): the fake RFC
+- [RFC-0001-OKFILE.md](RFC-0001-OKFILE.md): the RFC
 - [okfile/conformance.py](okfile/conformance.py): importable reference implementation
 - [okfile/cli.py](okfile/cli.py): console entrypoint for `okfile`
 - [tools/okfile_conformance.py](tools/okfile_conformance.py): compatibility wrapper
@@ -113,17 +112,11 @@ python3 -m unittest discover -s tests
 CI runs the tests, installs the package, verifies `okfile examples/valid.ok`,
 and runs the ceremony profile.
 
-## Why?
-
-Because a three-byte file is funnier when it has a standards process.
-
-The tool is real. The standard is tiny. The seriousness is the joke.
-
 ## Prior Art
 
-- RFC 2119, for making ordinary words feel legally upholstered.
+- RFC 2119, for normative keyword interpretation.
 - Unix exit status `0`, for being useful without needing a committee.
-- Every CI badge that ever said "passing" while concealing a small tragedy.
+- CI status badges.
 
 ## License
 
